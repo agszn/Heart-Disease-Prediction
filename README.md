@@ -83,14 +83,26 @@ Once the application is running, you can:
 
 ## Screenshots
 
-The following screenshots are included in the project to show the functionality of the system:
+Here are some screenshots that demonstrate the functionality of the system:
 
-- **Dataset Preview**: `assert/images/dataset.png`
-- **Heart Disease Prediction Page**: `assert/images/HeartDiseasePrediction.png`
-- **Home Page**: `assert/images/home.png`
-- **Login Page**: `assert/images/login.png`
-- **Register Page**: `assert/images/register.png`
-- **Result Page**: `assert/images/Result.png`
+- **Dataset Preview**  
+  ![Dataset](assert/images/dataset.png)
+
+- **Heart Disease Prediction Page**  
+  ![Heart Disease Prediction](assert/images/HeartDiseasePrediction.png)
+
+- **Home Page**  
+  ![Home Page](assert/images/home.png)
+
+- **Login Page**  
+  ![Login Page](assert/images/login.png)
+
+- **Register Page**  
+  ![Register Page](assert/images/register.png)
+
+- **Result Page**  
+  ![Result Page](assert/images/Result.png)
+
 
 ## Technologies Used
 
