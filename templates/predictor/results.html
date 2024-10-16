@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Heart Disease Prediction Result{% endblock %}
+
+{% block style %}
+    <style>
+        .heart-disease-result {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .heart-disease-prediction-status {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .heart-disease-predicted-models {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .heart-disease-img {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+    <div class="heart-disease-result">
+        <h1>Heart Disease Prediction Results</h1>
+        <p class="heart-disease-prediction-status">
+            Suffering from Cardiac Disease: <strong>{{ has_cardiac_disease }}</strong>
+        </p>
+        {% if has_cardiac_disease == "Yes" %}
+        <div class="heart-disease-predicted-models">
+            Models predicting heart disease:
+            <ul>
+                {% for model in cardiac_disease_predictions %}
+                <li>{{ model }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <img src="{{ uri }}" alt="Model Predictions Comparison" class="heart-disease-img">
+    </div>
+{% endblock %}

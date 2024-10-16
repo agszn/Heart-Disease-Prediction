@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#"><h1><span class="text-light">Cardiac</span> Disease <span class="text-light"> Detection</span></h1></a>
+
+      <div class="collapse navbar-collapse" id="navbarSupport">
+        <ul class="navbar-nav ml-auto">
+        {% if request.user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About Us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'dataset' %}">Dataset</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'predict' %}">Service</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+          </li>
+          <form method="post" action="{% url 'logout' %}" class="form-inline my-2 my-lg-0 ">
+            {% csrf_token %}
+            <button type="submit" class="btn  my-2 my-sm-0 text-dark">Logout</button>
+        </form>
+    {% else %}
+    <li class="nav-item">
+        <a class="btn btn-primary ml-lg-3" href="{% url 'login' %}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-primary ml-lg-3" href="{% url 'register' %}">Register</a>
+      </li>
+      {% endif %}
+        </ul>
+      </div> <!-- .navbar-collapse -->
+    </div> <!-- .container -->
+  </nav>
+

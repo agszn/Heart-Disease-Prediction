@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Dataset Display{% endblock %}
+
+{% block style %}
+<style>
+
+    .table-container {
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    table, th, td {
+        border: 1px solid #dee2e6;
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+    }
+    .pagination a, .pagination span {
+        margin: 0 5px;
+        padding: 8px 16px;
+        border: 1px solid #dee2e6;
+        color: #007bff;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+    .pagination .current {
+        background-color: #007bff;
+        color: #fff;
+        border: 1px solid #007bff;
+    }
+    .pagination .disabled {
+        color: #dee2e6;
+        pointer-events: none;
+    }
+</style>
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+<div class="table-container">
+    <h1>Dataset</h1>
+    {% if headers and page_obj %}
+    <table>
+        <thead>
+            <tr>
+                {% for header in headers %}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in page_obj %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">&lt; prev</a>
+        {% else %}
+            <span class="disabled">&laquo; first</span>
+            <span class="disabled">&lt; prev</span>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <span class="current">{{ num }}</span>
+            {% elif num > page_obj.number|add:'-5' and num < page_obj.number|add:'5' %}
+                <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next &gt;</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% else %}
+            <span class="disabled">next &gt;</span>
+            <span class="disabled">last &raquo;</span>
+        {% endif %}
+    </div>
+    {% else %}
+    <p>No data available in the CSV file.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
